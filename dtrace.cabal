@@ -1,0 +1,37 @@
+name:                dtrace
+version:             0.1
+cabal-version:       >= 1.2
+synopsis:            Interface to the DTrace system tracing utility
+category:            System
+license:             BSD3
+license-file:        LICENSE
+author:              Aaron Tomb <atomb@galois.com>
+maintainer:          Aaron Tomb <atomb@galois.com>
+tested-with:         GHC == 6.8.2
+extra-source-files:  cbits/*
+
+flag test
+  description: Build an example test program
+  default: False
+
+library
+    build-depends:    base
+    extensions:       ForeignFunctionInterface
+    ghc-options:      -Wall -Werror
+    ghc-prof-options: -prof -auto-all
+    exposed-modules:  System.DTrace
+    includes:         cbits/trace.h
+    c-sources:        cbits/user-trace.c
+    if os(darwin)
+        buildable: True
+    else
+        buildable: False
+
+executable DTTest
+    main-is: test/DTTest.hs
+    ghc-options: -Wall -Werror -package dtrace
+    if flag(test) && os(darwin)
+        buildable: True
+    else
+        buildable: False
+
