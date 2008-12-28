@@ -1,3 +1,4 @@
+build-type:          Simple
 name:                dtrace
 version:             0.1
 cabal-version:       >= 1.2
@@ -7,7 +8,7 @@ license:             BSD3
 license-file:        LICENSE
 author:              Aaron Tomb <atomb@galois.com>
 maintainer:          Aaron Tomb <atomb@galois.com>
-tested-with:         GHC == 6.8.2
+tested-with:         GHC == 6.8.2, GHC == 6.10.1
 extra-source-files:  cbits/*
 
 flag test
