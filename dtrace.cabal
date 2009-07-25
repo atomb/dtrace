@@ -17,21 +17,23 @@ flag test
 
 library
     build-depends:    base
-    extensions:       ForeignFunctionInterface
+    extensions:       ForeignFunctionInterface CPP
     ghc-options:      -Wall -Werror
     ghc-prof-options: -prof -auto-all
     exposed-modules:  System.DTrace
-    includes:         cbits/trace.h
-    c-sources:        cbits/user-trace.c
     if os(darwin)
-        buildable: True
-    else
-        buildable: False
+        includes:     cbits/trace.h
+        c-sources:    cbits/user-trace.c
+        cpp-options:  -DENABLE_TRACE=1
 
 executable DTTest
     main-is: test/DTTest.hs
-    ghc-options: -Wall -Werror -package dtrace
-    if flag(test) && os(darwin)
+    ghc-options: -Wall -Werror
+    if os(darwin)
+        includes:     cbits/trace.h
+        c-sources:    cbits/user-trace.c
+        cpp-options:  -DENABLE_TRACE=1
+    if flag(test)
         buildable: True
     else
         buildable: False
