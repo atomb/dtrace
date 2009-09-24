@@ -19,7 +19,7 @@ flag test
   default: False
 
 library
-    build-depends:    base
+    build-depends:    base >= 3 && < 5
     extensions:       ForeignFunctionInterface CPP
     ghc-options:      -Wall
     ghc-prof-options: -prof -auto-all
