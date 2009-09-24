@@ -6,8 +6,8 @@ synopsis:            Interface to the DTrace system tracing utility
 category:            System
 license:             BSD3
 license-file:        LICENSE
-author:              Aaron Tomb <atomb@galois.com>
-maintainer:          Aaron Tomb <atomb@galois.com>
+author:              Aaron Tomb <aarontomb@gmail.com>
+maintainer:          Aaron Tomb <aarontomb@gmail.com>
 tested-with:         GHC == 6.8.2, GHC == 6.10.1
 extra-source-files:  cbits/*
 
